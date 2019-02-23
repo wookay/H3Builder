@@ -17,9 +17,14 @@ env:
     - BINARYBUILDER_AUTOMATIC_APPLE=true
 sudo: required
 
+addons:
+  apt:
+    packages:
+      - doxygen
+
 # Before anything else, get the latest versions of things  
 before_script:
-- julia --color=yes -e 'using Pkg; pkg"add BinaryBuilder.jl"; pkg"precompile"'
+- julia --color=yes -e 'using Pkg; pkg"add BinaryBuilder"; pkg"precompile"'
 
 script:
 - julia --color=yes build_tarballs.jl

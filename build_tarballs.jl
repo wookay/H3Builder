@@ -22,8 +22,6 @@ mkdir build
 cd build
 cmake -DCMAKE_INSTALL_PREFIX=$prefix \
       -DCMAKE_TOOLCHAIN_FILE=/opt/$target/$target.toolchain \
-      -DRUN_HAVE_STD_REGEX=0 \
-      -DRUN_HAVE_STEADY_CLOCK=0 \
       ../
 make
 """
