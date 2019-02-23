@@ -11,8 +11,7 @@ version = v"3.4.2"
 # url2hash("https://github.com/uber/h3/archive/v3.4.2.zip") |> println
 
 sources = [
-    "https://github.com/uber/h3/archive/v$version.zip" =>
-    "c5d024af8f7a852349ffce69fe33b456f96d7c940c4ffbeb872f98318b21e03c",
+    "https://github.com/uber/h3/archive/v$version.zip" => "c5d024af8f7a852349ffce69fe33b456f96d7c940c4ffbeb872f98318b21e03c",
 ]
 
 # Bash recipe for building across all platforms
@@ -57,9 +56,11 @@ EOF
 patch -p1 -i CMakeLists.txt.patch
 mkdir build
 cd build
-cmake -DCMAKE_INSTALL_PREFIX=\$prefix -DCMAKE_TOOLCHAIN_FILE=/opt/\$target/\$target.toolchain ..
+cmake -DBUILD_SHARED_LIBS=1 -DCMAKE_INSTALL_PREFIX=\$prefix -DCMAKE_TOOLCHAIN_FILE=/opt/\$target/\$target.toolchain ..
 make
 make install
+rm -rf \$WORKSPACE/destdir/bin \$WORKSPACE/destdir/lib/cmake \$WORKSPACE/destdir/logs
+ls \$WORKSPACE/destdir/lib
 """
 
 # These are the platforms we will build for by default, unless further
