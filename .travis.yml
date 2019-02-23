@@ -17,20 +17,9 @@ env:
     - BINARYBUILDER_AUTOMATIC_APPLE=true
 sudo: required
 
-addons:
-  apt:
-    packages:
-      - doxygen
-
 # Before anything else, get the latest versions of things  
 before_script:
 - julia --color=yes -e 'using Pkg; pkg"add BinaryBuilder"; pkg"precompile"'
-- CMAKE_URL="http://www.cmake.org/files/v3.10/cmake-3.10.2-Linux-x86_64.tar.gz"
-- mkdir -p cmake && travis_retry wget --no-check-certificate --quiet -O - ${CMAKE_URL} | tar --strip-components=1 -xz -C cmake
-- export PATH=${PWD}/cmake/bin:${PATH}
-- which cmake
-- cmake --version
-- doxygen --version
 
 script:
 - julia --color=yes build_tarballs.jl
