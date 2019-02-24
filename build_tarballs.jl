@@ -59,7 +59,7 @@ cd build
 cmake -DBUILD_SHARED_LIBS=1 -DCMAKE_INSTALL_PREFIX=\$prefix -DCMAKE_TOOLCHAIN_FILE=/opt/\$target/\$target.toolchain ..
 make
 make install
-rm -rf \$WORKSPACE/destdir/bin \$WORKSPACE/destdir/lib/cmake \$WORKSPACE/destdir/logs
+rm -rf \$WORKSPACE/destdir/bin/{g,h,k}* \$WORKSPACE/destdir/lib/cmake \$WORKSPACE/destdir/logs
 ls \$WORKSPACE/destdir/lib
 """
 
