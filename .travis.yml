@@ -1,8 +1,8 @@
 language: julia
 os:
-- linux
+  - linux
 julia:
-- 1.0
+  - 1.3
 notifications:
   email: false
 git:
@@ -18,10 +18,10 @@ env:
 sudo: required
 
 before_script:
-- julia --color=yes -e 'using Pkg; pkg"add BinaryBuilder"; pkg"precompile"'
+  - julia --color=yes -e 'using Pkg; pkg"add BinaryBuilder"; pkg"precompile"'
 
 script:
-- julia --color=yes build_tarballs.jl --verbose
+  - julia --color=yes build_tarballs.jl
 
 deploy:
   provider: releases
