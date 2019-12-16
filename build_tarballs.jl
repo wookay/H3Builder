@@ -57,29 +57,21 @@ EOF
 patch -p1 -i CMakeLists.txt.patch
 mkdir build
 cd build
-cmake -DBUILD_SHARED_LIBS=1 -DCMAKE_INSTALL_PREFIX=\$prefix -DCMAKE_TOOLCHAIN_FILE=/opt/\$target/\$target.toolchain ..
+cmake -DBUILD_SHARED_LIBS=1 -DCMAKE_INSTALL_PREFIX=\${prefix} -DCMAKE_TOOLCHAIN_FILE=\${CMAKE_TARGET_TOOLCHAIN} ..
 make
 make install
 rm -rf \$WORKSPACE/destdir/bin/{g,h,k}* \$WORKSPACE/destdir/lib/cmake \$WORKSPACE/destdir/logs
 ls \$WORKSPACE/destdir/lib
 """
-#=   BinaryBuilder v0.2.0
-  cmake -DBUILD_SHARED_LIBS=1 -DCMAKE_INSTALL_PREFIX=\${prefix} -DCMAKE_TOOLCHAIN_FILE=\${CMAKE_TARGET_TOOLCHAIN} ..
-=#
 
 # These are the platforms we will build for by default, unless further
 # platforms are passed in on the command line
 platforms = supported_platforms()
 
 # The products that we will ensure are always built
-products(prefix) = Product[
-    LibraryProduct(prefix, "libh3", :libh3),
-]
-#=   BinaryBuilder v0.2.0
 products = Product[
     LibraryProduct("libh3", :libh3),
 ]
-=#
 
 # Dependencies that must be installed before this package can be built
 dependencies = [

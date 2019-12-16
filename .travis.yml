@@ -18,7 +18,7 @@ env:
 sudo: required
 
 before_script:
-  - julia --color=yes -e 'using Pkg; pkg"add BinaryBuilder@v0.1.4"; pkg"precompile"'
+  - julia --color=yes -e 'using Pkg; pkg"add BinaryBuilder@v0.2.0"; pkg"precompile"'
 
 script:
   - julia --color=yes build_tarballs.jl
