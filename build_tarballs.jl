@@ -2,25 +2,28 @@
 # `julia build_tarballs.jl --help` to see a usage message.
 using BinaryBuilder
 name = "H3"
-version = v"3.6.2"
+version = v"3.6.3"
 
-# function url2hash(url)
-#     path = download(url)
-#     open(io-> bytes2hex(BinaryProvider.sha256(io)), path)
-# end
-# url2hash("https://github.com/uber/h3/archive/v3.6.2.zip") |> println
+#=
+using BinaryProvider
+function url2hash(url)
+     path = download(url)
+     open(io-> bytes2hex(BinaryProvider.sha256(io)), path)
+end
+url2hash("https://github.com/uber/h3/archive/v3.6.3.zip") |> println
+=#
 
 sources = [
-    "https://github.com/uber/h3/archive/v$version.zip" => "42c809107bfd1396b07c27f6324745ce7f9d941afd4938ccd477f95a263e7852",
+    "https://github.com/uber/h3/archive/v$version.zip" => "33cea2c77961a7736c81f2cd7f23131aa1ff71ce68bb5b3facca40a257e0741f",
 ]
 
 # Bash recipe for building across all platforms
 script = """
 cd \$WORKSPACE/srcdir/h3-$version/
 cat <<EOF > CMakeLists.txt.patch
-diff -uNr h3-3.6.2-original/CMakeLists.txt h3-3.6.2/CMakeLists.txt
---- h3-3.6.2-original/CMakeLists.txt	2019-12-15 20:20:53.000000000 +0900
-+++ h3-3.6.2/CMakeLists.txt	2019-12-15 20:21:42.000000000 +0900
+diff -uNr h3-3.6.3-original/CMakeLists.txt h3-3.6.3/CMakeLists.txt
+--- h3-3.6.3-original/CMakeLists.txt	2019-12-15 20:20:53.000000000 +0900
++++ h3-3.6.3/CMakeLists.txt	2019-12-15 20:21:42.000000000 +0900
 @@ -56,6 +56,9 @@
 
  project(h3 LANGUAGES C VERSION \\\${H3_VERSION})
