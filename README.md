@@ -5,7 +5,7 @@
 |  [![][travis-img]][travis-url]  |
 
 
- * build: h3 v3.6.2
+ * build: h3 v3.6.3
    - https://github.com/uber/h3/releases
 
 
