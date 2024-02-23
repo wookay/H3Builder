@@ -7,9 +7,7 @@ version = v"4.1.0"
 
 # Collection of sources required to complete build
 sources = [
-    ArchiveSource("https://github.com/uber/h3/archive/refs/tags/v$(version).zip",
-                  "18e33fbdb6c1528e42c125f85be7fc088753ec2467dad6db4e5bc40a436d2120")
-    # curl -L https://github.com/uber/h3/archive/refs/tags/v4.1.0.zip | shasum -a 256
+    GitSource("https://github.com/uber/h3.git", "5c91149104ac02c4f06faa4fc557e69cf6b131ef")
 ]
 
 # Bash recipe for building across all platforms
